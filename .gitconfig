@@ -15,7 +15,10 @@
 [alias]
     ls        = ls-tree -r --full-tree --full-name --name-only iteration
     st        = status --short
+
+    # Show untracked files
     stu       = status --untracked-files=no
+
     ci        = commit
     cia       = commit --allow-empty-message -a
     br        = branch
@@ -23,15 +26,43 @@
     df        = diff
     lg        = log -p
 #   revert    = checkout --
+
     go        = !gitgo
-    hist      = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+    hist      = log --pretty=format: '%h %ad | %s%d [%an]' --graph --date=short
+
     logs      = git shortlog --summary | sort --summary --reverse --numeric-sort
+
+    # Show git commands
     commands  = help -a
     type      = cat-file -t
     dump      = cat-file -p
+
+    # Show conflicts
     conflicts = !git ls-files --unmerged | cut -f2 | sort -u | xargs grep -El '<<<<<<<|=======|>>>>>>>'
+
     unmerged  = !git ls-files --unmerged | cut -f2 | sort -u
 
+   # Show aliases
+   aliases   = config -l | grep alias | cut -c 7-
+
+    # Find files
+    find      = ls-files | grep -ii
+
+    # Remove files which have been deleted
+    remove    = !git ls-files -z --deleted | xargs -0 git rm
+
+    # Ignore a file
+    ignore    = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+
+    # Assume a file as unchanged
+    assume    = update-index --assume-unchanged
+
+    # Unassume a file
+    unassume  = update-index --no-assume-unchanged
+
+    # Show assumed files
+    assumed   = '!git ls-files -v | grep ^h | cut -c 3-'
 
 [color]
     diff   = true
