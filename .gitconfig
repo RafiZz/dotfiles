@@ -43,8 +43,8 @@
 
     unmerged  = !git ls-files --unmerged | cut -f2 | sort -u
 
-   # Show aliases
-   aliases   = config -l | grep alias | cut -c 7-
+    # Show aliases
+    aliases   = config -l | grep alias | cut -c 7-
 
     # Find files
     find      = ls-files | grep -ii
