@@ -29,9 +29,9 @@
 
     go        = !gitgo
 
-    hist      = log --pretty=format: '%h %ad | %s%d [%an]' --graph --date=short
+    hist      = log --pretty=format: \"%h %ad | %s%d [%an]\" --graph --date=short
 
-    logs      = git shortlog --summary | sort --summary --reverse --numeric-sort
+    logs      = shortlog --summary | sort --summary --reverse --numeric-sort
 
     # Show git commands
     commands  = help -a
@@ -63,6 +63,7 @@
 
     # Show assumed files
     assumed   = '!git ls-files -v | grep ^h | cut -c 3-'
+
 
 [color]
     diff   = true
