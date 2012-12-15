@@ -105,3 +105,6 @@
 
 [diff]
 	renames = copy
+
+[log]
+	decorate = full

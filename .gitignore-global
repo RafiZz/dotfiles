@@ -1,0 +1,38 @@
+# Ignore rules
+
+*~
+*#*
+._*
+\#*
+
+# Compiled source
+
+*.com
+*.class
+*.dll
+*.exe
+*.a
+*.o
+*.so
+*.lo
+*.bak
+*.iml
+*.out
+a.out
+*.pyc
+
+*.tmp
+*.bak
+tmp
+
+# OS generated files
+
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Project files
+
+.idea
+*.xmind
