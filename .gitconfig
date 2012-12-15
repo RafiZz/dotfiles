@@ -22,6 +22,11 @@
 	st         = status --short
 	cia        = commit --allow-empty-message -a
 
+	# Stash commands
+	sl = stash list
+	sa = stash apply
+	ss = stash save
+
 	# Show untracked files
 	stu        = status --untracked-files=no
 
@@ -37,15 +42,7 @@
 	info       = cat-file -p
 
 	# Show files
-	ls         = !git rev-parse --abbrev-ref HEAD | xargs git ls-tree -r --full-tree --full-name --name-only
-
-	logs       = !git shortlog --summary | sort --reverse --numeric-sort
-
-	# Show conflicts
-	conflicts  = !git ls-files --unmerged | cut -f2 | sort -u | xargs grep -El '<<<<<<<|=======|>>>>>>>'
-
-	# Show unmerged files
-	unmerged   = !git ls-files --unmerged | cut -f2 | sort -u
+ 	unmerged   = !git ls-files --unmerged | cut -f2 | sort -u
 
 	# Show aliases
 	aliases    = !git config -l | grep alias | cut -c 7-
