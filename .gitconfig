@@ -8,8 +8,8 @@
 	autocrlf   = input
 	safecrlf   = true
 	whitespace = fix, -indent-with-non-tab, trailing-space, cr-at-eol
-#   pager      = more
 	pager      = less -R
+#   pager      = more
 
 
 [alias]
@@ -37,7 +37,7 @@
 	info       = cat-file -p
 
 	# Show files
-	ls         = !git ls-tree -r --full-tree --full-name --name-only
+	ls         = !git rev-parse --abbrev-ref HEAD | xargs git ls-tree -r --full-tree --full-name --name-only
 
 	logs       = !git shortlog --summary | sort --reverse --numeric-sort
 
@@ -57,7 +57,7 @@
 	remove     = !git ls-files -z --deleted | xargs -0 git rm
 
 	# Ignore a file
-	ignore     = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+	ignore     = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >> .gitignore
 
 	# Assume a file as unchanged
 	assume     = !git update-index --assume-unchanged
