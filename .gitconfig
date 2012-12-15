@@ -25,7 +25,7 @@
 #   revert    = checkout --
     go        = !gitgo
     hist      = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    log       = git shortlog --summary | sort --summary --reverse --numeric-sort
+    logis      = git shortlog --summary | sort --summary --reverse --numeric-sort
     commands  = help -a
     type      = cat-file -t
     dump      = cat-file -p
