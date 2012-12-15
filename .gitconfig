@@ -27,6 +27,12 @@
 	sa         = stash apply
 	ss         = stash save
 
+	# Show all prfiles
+	ls         = !git rev-parse --abbrev-ref HEAD | xargs git ls-tree -r --full-tree --full-name --name-only
+
+	# Push
+	pc         = !git rev-parse --abbrev-ref HEAD | xargs git push origin master
+
 	# Show untracked files
 	stu        = status --untracked-files=no
 
@@ -41,7 +47,7 @@
 	# Get file info
 	info       = cat-file -p
 
-	# Show files
+	# Show unmergd files
  	unmerged   = !git ls-files --unmerged | cut -f2 | sort -u
 
 	# Show aliases
