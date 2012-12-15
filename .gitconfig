@@ -1,93 +1,101 @@
 [user]
-    name  = Alexander Guinness
-    email = monolithed@gmail.com
+	name  = Alexander Guinness
+	email = monolithed@gmail.com
 
 
 [core]
-#   excludesfile = /home/abashkin/.gitignore_global
-    autocrlf   = input
-    safecrlf   = true
+#   excludesfile = /home/..../.gitignore_global
+	autocrlf   = input
+	safecrlf   = true
 	whitespace = fix, -indent-with-non-tab, trailing-space, cr-at-eol
 #   pager      = more
-    pager      = less -R
+	pager      = less -R
 
 
 [alias]
-    ls        = ls-tree -r --full-tree --full-name --name-only iteration
-    st        = status --short
+	# Base commands
+	ci         = commit
+	br         = branch
+	co         = checkout
+	df         = diff
+	lg         = log -p
+	st         = status --short
+	cia        = commit --allow-empty-message -a
 
-    # Show untracked files
-    stu       = status --untracked-files=no
+	# Show untracked files
+	stu        = status --untracked-files=no
 
-    ci        = commit
-    cia       = commit --allow-empty-message -a
-    br        = branch
-    co        = checkout
-    df        = diff
-    lg        = log -p
-#   revert    = checkout --
+	history    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
-    go        = !gitgo
+	# Show git commands
+	commands   = help -a
 
-    hist      = log --pretty=format: \"%h %ad | %s%d [%an]\" --graph --date=short
+	# Get object type
+	type       = cat-file -t
 
-    logs      = shortlog --summary | sort --summary --reverse --numeric-sort
+	# Get file info
+	info       = cat-file -p
 
-    # Show git commands
-    commands  = help -a
-    type      = cat-file -t
-    dump      = cat-file -p
+	# Show files
+	ls         = !git ls-tree -r --full-tree --full-name --name-only
 
-    # Show conflicts
-    conflicts = !git ls-files --unmerged | cut -f2 | sort -u | xargs grep -El '<<<<<<<|=======|>>>>>>>'
+	logs       = !git shortlog --summary | sort --reverse --numeric-sort
 
-    unmerged  = !git ls-files --unmerged | cut -f2 | sort -u
+	# Show conflicts
+	conflicts  = !git ls-files --unmerged | cut -f2 | sort -u | xargs grep -El '<<<<<<<|=======|>>>>>>>'
 
-    # Show aliases
-    aliases   = config -l | grep alias | cut -c 7-
+	# Show unmerged files
+	unmerged   = !git ls-files --unmerged | cut -f2 | sort -u
 
-    # Find files
-    find      = ls-files | grep -ii
+	# Show aliases
+	aliases    = !git config -l | grep alias | cut -c 7-
 
-    # Remove files which have been deleted
-    remove    = !git ls-files -z --deleted | xargs -0 git rm
+	# Find files
+	find       = !git ls-files | grep -ii
 
-    # Ignore a file
-    ignore    = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+	# Remove files which have been deleted
+	remove     = !git ls-files -z --deleted | xargs -0 git rm
 
-    # Assume a file as unchanged
-    assume    = update-index --assume-unchanged
+	# Ignore a file
+	ignore     = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
 
-    # Unassume a file
-    unassume  = update-index --no-assume-unchanged
+	# Assume a file as unchanged
+	assume     = !git update-index --assume-unchanged
 
-    # Show assumed files
-    assumed   = '!git ls-files -v | grep ^h | cut -c 3-'
+	# Unassume a file
+	unassume   = !git update-index --no-assume-unchanged
+
+	# Show assumed files
+	assumed    = !git ls-files -v | grep ^h | cut -c 3-
+
+	go         = !gitgo
+
+#   revert     = checkout --
 
 
 [color]
-    diff   = true
-    grep   = true
-    status = true
-    ui     = true
+	diff   = true
+	grep   = true
+	status = true
+	ui     = true
 
-    [color "branch"]
-        current = yellow reverse
-        local   = yellow
-        remote  = green
+	[color "branch"]
+		current = yellow reverse
+		local   = yellow
+		remote  = green
 
-    [color "diff"]
-        meta       = normal
-        frag       = magenta bold
-        old        = red bold
-        new        = blue bold
-        whitespace = red reverse
+	[color "diff"]
+		meta       = normal
+		frag       = magenta bold
+		old	       = red bold
+		new	       = blue bold
+		whitespace = red reverse
 
-    [color "status"]
-        added      = yellow
-        changed    = green
-        untracked  = cyan
+	[color "status"]
+		added      = yellow
+		changed    = green
+		untracked  = cyan
 
 
 [diff]
-    renames = copy
+	renames = copy
