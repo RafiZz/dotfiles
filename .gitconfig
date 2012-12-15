@@ -23,9 +23,9 @@
 	cia        = commit --allow-empty-message -a
 
 	# Stash commands
-	sl = stash list
-	sa = stash apply
-	ss = stash save
+	sl         = stash list
+	sa         = stash apply
+	ss         = stash save
 
 	# Show untracked files
 	stu        = status --untracked-files=no
