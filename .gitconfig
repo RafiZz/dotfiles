@@ -31,7 +31,7 @@
 	ls         = !git rev-parse --abbrev-ref HEAD | xargs git ls-tree -r --full-tree --full-name --name-only
 
 	# Push
-	pc         = !git rev-parse --abbrev-ref HEAD | xargs git push origin master
+	pc         = !git rev-parse --abbrev-ref HEAD | xargs git push origin
 
 	# Show untracked files
 	stu        = status --untracked-files=no
