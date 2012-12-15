@@ -1,58 +1,61 @@
 [user]
-	name  = Alexander Guinness
-	email = monolithed@gmail.com
+    name  = Alexander Guinness
+    email = monolithed@gmail.com
 
 
 [core]
-#	excludesfile = /home/abashkin/.gitignore_global
-	autocrlf   = input
-	safecrlf   = true
+#   excludesfile = /home/abashkin/.gitignore_global
+    autocrlf   = input
+    safecrlf   = true
 	whitespace = fix, -indent-with-non-tab, trailing-space, cr-at-eol
-#	pager      = more
-	pager      = less -R
+#   pager      = more
+    pager      = less -R
+
 
 [alias]
     ls        = ls-tree -r --full-tree --full-name --name-only iteration
     st        = status --short
-	stu       = status --untracked-files=no
-	ci        = commit
-	cia       = commit --allow-empty-message -a
-	br        = branch
-	co        = checkout
-	df        = diff
-	lg        = log -p
-#	revert    = checkout --
-	go        = !gitgo
-	hist      = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	type      = cat-file -t
-	dump      = cat-file -p
-	conflicts = !git ls-files --unmerged | cut -f2 | sort -u | xargs grep -El '<<<<<<<|=======|>>>>>>>'
-	unmerged  = !git ls-files --unmerged | cut -f2 | sort -u
+    stu       = status --untracked-files=no
+    ci        = commit
+    cia       = commit --allow-empty-message -a
+    br        = branch
+    co        = checkout
+    df        = diff
+    lg        = log -p
+#   revert    = checkout --
+    go        = !gitgo
+    hist      = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    log       = git shortlog --summary | sort --summary --reverse --numeric-sort
+    commands  = help -a
+    type      = cat-file -t
+    dump      = cat-file -p
+    conflicts = !git ls-files --unmerged | cut -f2 | sort -u | xargs grep -El '<<<<<<<|=======|>>>>>>>'
+    unmerged  = !git ls-files --unmerged | cut -f2 | sort -u
 
 
 [color]
-	diff   = true
-	grep   = true
-	status = true
-	ui     = true
+    diff   = true
+    grep   = true
+    status = true
+    ui     = true
 
-	[color "branch"]
-		current = yellow reverse
-		local   = yellow
-		remote  = green
+    [color "branch"]
+        current = yellow reverse
+        local   = yellow
+        remote  = green
 
-	[color "diff"]
-		meta       = normal
-		frag       = magenta bold
-		old        = red bold
-		new        = blue bold
-		whitespace = red reverse
+    [color "diff"]
+        meta       = normal
+        frag       = magenta bold
+        old        = red bold
+        new        = blue bold
+        whitespace = red reverse
 
-	[color "status"]
-		added      = yellow
-		changed    = green
-		untracked  = cyan
+    [color "status"]
+        added      = yellow
+        changed    = green
+        untracked  = cyan
 
 
 [diff]
-	renames = copy
+    renames = copy
