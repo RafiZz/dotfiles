@@ -70,7 +70,7 @@
 
 	go         = !gitgo
 
-#   revert     = checkout --
+#	revert     = checkout --
 
 
 [color]
