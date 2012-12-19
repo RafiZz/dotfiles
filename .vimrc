@@ -78,6 +78,7 @@ set smartindent
 set autoindent
 set shiftwidth=4
 set backspace=indent,eol,start
+set noet|retab!
 
 
 " save file
