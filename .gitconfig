@@ -30,7 +30,7 @@
 	# Show all prfiles
 	ls         = !git rev-parse --abbrev-ref HEAD | xargs git ls-tree -r --full-tree --full-name --name-only
 
-	# Push
+	# Push into current remote branch
 	pc         = !git rev-parse --abbrev-ref HEAD | xargs git push origin
 
 	# Show untracked files
@@ -47,10 +47,13 @@
 	# Get file info
 	info       = cat-file -p
 
-        # Show conflicts
+    # Show commit logs
+    logs      = git shortlog --summary | sort --reverse --numeric-sort
+
+     # Show conflicts
 	conflicts = !git ls-files --unmerged | cut -f2 | sort -u | xargs grep -El '<<<<<<<|=======|>>>>>>>'
 
-        # Show unmergd files
+    # Show unmergd files
  	unmerged   = !git ls-files --unmerged | cut -f2 | sort -u
 
 	# Show aliases
