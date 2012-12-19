@@ -36,7 +36,7 @@
 	# Show untracked files
 	stu        = status --untracked-files=no
 
-    # Show history
+	# Show history
 	history    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
 	# Show git commands
