@@ -1,5 +1,11 @@
+
+" Syntax highlight
 syntax enable
+filetype plugin indent on
 colorscheme slate
+set t_Co=256
+set matchpairs+=<:>
+
 
 " Show line numbers
 set number
@@ -37,10 +43,43 @@ set nocp
 set redraw
 set showcmd
 set laststatus=2
+set showcmd
+
+" Show line numbers when scrolling
+set scrolloff=3
+
+" Wrap long lines
+set wrap
+
+" Autocomplete
+set showmatch
+imap [ []<left>
+imap ( ()<left>
+imap < <><left>
+imap { {}<left>
+
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType tt2html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType cpp set omnifunc=cppcomplete#Complete
+autocmd FileType objc set omnifunc=objcomplete#Complete
+
+
+" Set folding
+set foldmethod=manual
+set foldlevelstart=1
+set foldnestmax=2
+
 
 " Set a latin keyboard layout by default
 set iminsert=0
 set imsearch=0
+
 
 "Search
 set ignorecase
