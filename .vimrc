@@ -20,9 +20,9 @@ match Whitespace /  \+/
 " Paste copied text without auto-formatting
 set paste
 
-" Enable mouse scrolling
 
 " General options
+"vsplit
 set mouse=a
 set linebreak
 set showcmd

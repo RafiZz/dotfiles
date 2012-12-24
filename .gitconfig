@@ -61,7 +61,7 @@
 	aliases    = !git config -l | grep alias | cut -c 7-
 
 	# Find files
-	find       = !git ls-files | grep -ii
+	find       = !git ls-files -r HEAD | grep -ii
 
 	# Remove files which have been deleted
 	remove     = !git ls-files -z --deleted | xargs -0 git rm
