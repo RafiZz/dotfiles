@@ -81,6 +81,9 @@
 	# Pull from remote repository
 	fork       = !git config --get remote.origin.url | xargs git pull
 
+	# Remote update
+	up = remote update
+	
 	# Delete multiple branches
 	#git branch -D `git for-each-ref --format="%(refname:short)" refs/heads/...`
 
@@ -117,4 +120,8 @@
 	renames = copy
 
 [log]
-	decorate = full
+	decorate = ful
+
+
+# Check SHA-1
+#git config --system receive.fsckObjects truel

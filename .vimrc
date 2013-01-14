@@ -23,6 +23,7 @@ set paste
 
 " General options
 "vsplit
+set noswapfile
 set mouse=a
 set linebreak
 set showcmd
@@ -99,7 +100,7 @@ set termencoding=utf-8
 set fileformat=unix
 set ffs=mac,unix,dos
 set fileencodings=utf-8,koi8-r,cp1251
-
+set noendofline binary
 
 " Enable russian layout
 set iskeyword=@,48-57,_,192-255
