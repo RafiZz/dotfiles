@@ -117,11 +117,14 @@
 
 
 [diff]
-	renames = copy
+	renames  = copy
 
 [log]
 	decorate = ful
 
+[filter "treatspaces"]
+	smudge = unexpand -t4
+	clean  = expand -t4
 
 # Check SHA-1
 #git config --system receive.fsckObjects truel
