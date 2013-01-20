@@ -1,18 +1,45 @@
 # .bashrc
+OS=`uname -s`
 
 export COMMAND_MODE=unix2003
-export LESS="-erX".
-
 alias zcat='gunzip -c'
-
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
-fi
+fi`
+
+
+# Colorize ls, less, more, grep
+case "$OS" in
+    "SunOS" ) 
+        # Solaris ls doesn't allow color, so use special characters
+        alias ls='ls -F'
+        ;;
+    "Linux" )
+        # GNU ls supports colors!
+        # See dircolors to customize colors
+        export LS_OPTIONS='--color=auto' 
+        alias ls='ls ${LS_OPTS}'
+
+        # Get color support for 'less'
+        export LESS="--RAW-CONTROL-CHARS"
+
+        # Use colors for less, man, etc.
+        [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
+
+        export GREP_OPTIONS="--color=auto"
+        ;;
+    "Darwin"|"FreeBSD")
+
+        # Most FreeBSD & Apple Darwin supports colors
+        export CLICOLOR=true
+
+        # Get color support for 'less'
+        export LESS="--RAW-CONTROL-CHARS -eX" 
+
 
 # User specific aliases and functions
-
 
 function ps1_git_status {
     local branch_color='\033[01;34m'

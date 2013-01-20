@@ -17,9 +17,6 @@ highlight Whitespace cterm=underline gui=underline ctermbg=NONE guibg=NONE cterm
 autocmd ColorScheme * highlight Whitespace gui=underline ctermbg=NONE guibg=NONE ctermfg=grey guifg=grey
 match Whitespace /  \+/
 
-" Paste copied text without auto-formatting
-set paste
-
 
 " General options
 "vsplit
@@ -120,6 +117,8 @@ set shiftwidth=4
 set backspace=indent,eol,start
 set noet|retab!
 
+" Paste copied text without auto-formatting
+set paste
 
 " save file
 imap <F2> <Esc>:w<CR>
