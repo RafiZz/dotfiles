@@ -121,22 +121,22 @@ set noet|retab!
 set paste
 
 " save file
-imap <F2> <Esc>:w<CR>
-map <F2> <Esc>:w<CR>
+" imap <F2> <Esc>:w<CR>
+" map <F2> <Esc>:w<CR>
 
 
 " open new tab
-imap <F4> <Esc>:browse tabnew<CR> 
-map <F4> <Esc>:browse tabnew<CR>
+" imap <F4> <Esc>:browse tabnew<CR> 
+" map <F4> <Esc>:browse tabnew<CR>
 
 
 " close vim
-set wildmenu
-set wcm=<Tab>
-menu Exit.quit     :quit<CR>
-menu Exit.quit!    :quit!<CR>
-menu Exit.save     :exit<CR>
-map <F10> :emenu Exit.<Tab>
+" set wildmenu
+" set wcm=<Tab>
+" menu Exit.quit     :quit<CR>
+" menu Exit.quit!    :quit!<CR>
+" menu Exit.save     :exit<CR>
+" map <F10> :emenu Exit.<Tab>
 
 
 " enable russian keys
@@ -145,7 +145,7 @@ map <F10> :emenu Exit.<Tab>
 " set langmap=ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\,.,ЙЦУКЕHГШЩЗХЪФЫВjАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
 
 " mac os
-set langmap=йцукенгшщзхъфывапролджэячсмитьбю/ЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ/;qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP[]ASDFGHJKL:'ZXCVBNM,./
+" set langmap=йцукенгшщзхъфывапролджэячсмитьбю/ЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ/;qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP[]ASDFGHJKL:'ZXCVBNM,./
 
 
 " autocomplete
