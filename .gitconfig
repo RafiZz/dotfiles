@@ -81,7 +81,7 @@
 	# Pull from remote repository
 	fork       = !git config --get remote.origin.url | xargs git pull
 
-	# Remote update
+	# Remote update (git fetch --all)
 	up = remote update
 	
 	# Delete multiple branches
