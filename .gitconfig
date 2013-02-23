@@ -36,6 +36,9 @@
 	# Show untracked files
 	stu        = status --untracked-files=no
 
+	# Show current reference
+	ref        = git symbolic-ref HEAD
+
 	# Show history
 	history    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
