@@ -59,6 +59,7 @@
 
 	# Show aliases
 	aliases    = !git config -l | grep alias | cut -c 7-
+	#git config --global --get-regexp alias
 
 	# Find files
 	find       = !git ls-files -r HEAD | grep -ii
