@@ -18,7 +18,7 @@
 	br         = branch
 	co         = checkout
 	df         = diff
-	lg         = log -p
+	lg         = log --abbrev-commit --left-right --name-only
 	st         = status --short
 	cia        = commit --allow-empty-message -a
 
