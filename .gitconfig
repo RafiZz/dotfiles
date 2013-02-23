@@ -120,7 +120,7 @@
 	renames  = copy
 
 [log]
-	decorate = ful
+	decorate = full
 
 [filter "treatspaces"]
 	smudge = unexpand -t4
