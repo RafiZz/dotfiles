@@ -66,6 +66,9 @@
 	# Remove files which have been deleted
 	remove     = !git ls-files -z --deleted | xargs -0 git rm
 
+	# Reset origin HEAD
+	return     = !git reset ORIG_HEAD
+
 	# Ignore a file
 	ignore     = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >> .gitignore
 
