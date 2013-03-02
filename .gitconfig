@@ -91,6 +91,11 @@
 	# Pull from remote repository
 	fork       = !git config --get remote.origin.url | xargs git pull
 
+	# git remote add remote git@github.com:monolithed/.configure.git
+	# git pull remote master
+
+	root = !pwd -P
+
 	# Remote update (git fetch --all)
 	up = remote update
 	
