@@ -18,11 +18,15 @@ autocmd ColorScheme * highlight Whitespace gui=underline ctermbg=NONE guibg=NONE
 match Whitespace /  \+/
 
 
+" Line brake by words
+set linebreak
+set dy=lastline
+
+
 " General options
 "vsplit
 set noswapfile
 set mouse=a
-set linebreak
 set showcmd
 set ruler
 set showmatch
@@ -33,21 +37,21 @@ set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&
 "set statusline=%F%m%r%h%w\ [%{&ff}]\ %=\ %l,%v\ %P
 set visualbell
 set hidden
-set t_Co=256
 set cursorline
 set autoread
 set completeopt=longest,menuone
 set nocp
 set redraw
-set showcmd
 set laststatus=2
-set showcmd
+
 
 " Show line numbers when scrolling
 set scrolloff=3
 
+
 " Wrap long lines
 set wrap
+
 
 " Autocomplete
 set showmatch
@@ -81,7 +85,11 @@ set imsearch=0
 
 "Search
 set ignorecase
-set nowrapscan
+
+" Loop search 
+"set nowrapscan
+
+
 set hlsearch
 set smartcase
 set incsearch
@@ -95,12 +103,14 @@ set infercase
 set encoding=utf-8
 set termencoding=utf-8
 set fileformat=unix
-set ffs=mac,unix,dos
+set ffs=unix,mac,dos
 set fileencodings=utf-8,koi8-r,cp1251
 set noendofline binary
 
+
 " Enable russian layout
 set iskeyword=@,48-57,_,192-255
+
 
 "set guifont=courier_new:h10:cRUSSIAN
 
@@ -111,14 +121,22 @@ set tabstop=4
 set softtabstop=4
 set smarttab
 set expandtab
-set smartindent
+set smartindent " May conflict with paste mode!
 set autoindent
 set shiftwidth=4
 set backspace=indent,eol,start
 set noet|retab!
 
+
 " Paste copied text without auto-formatting
-set paste
+set clipboard=unnamed
+set paste!
+
+
+" cmd + v for inset mode
+" imap <D-v> ^O:set paste<Enter>^R+^O:set nopaste<Enter>
+imap <D-V> ^O"+p
+
 
 " save file
 " imap <F2> <Esc>:w<CR>
@@ -151,7 +169,7 @@ set paste
 " autocomplete
 function! InsertTabWrapper(direction)
     let col = col('.') - 1
-    
+
     if !col || getline('.')[col - 1] !~ '\k'
          return "\<tab>"
     elseif "backward" == a:direction
@@ -163,3 +181,22 @@ endfunction
 
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
+
+
+function! InsertStatuslineColor(mode)
+	if a:mode == 'i'
+		hi statusline guibg=magenta
+	elseif a:mode == 'r'
+		hi statusline guibg=blue
+	else
+		hi statusline guibg=red
+	endif
+endfunction
+
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertChange * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi statusline guibg=green
+
+" default the statusline to green when entering Vim
+hi statusline guibg=green
+
