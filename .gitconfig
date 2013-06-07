@@ -12,6 +12,10 @@
 #	pager      = more
 
 
+[showbranch]
+	default    = --topo-order
+#	git show-branch --reflog="10,1 day ago"
+
 [alias]
 	# Base commands
 	ci         = commit
