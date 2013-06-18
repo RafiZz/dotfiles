@@ -20,7 +20,6 @@ a.out
 tmp
 *.xmind
 .project
-.settings
 .gitconfig
 .DS_Store
 */tornado
