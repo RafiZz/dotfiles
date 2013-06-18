@@ -36,10 +36,12 @@
 #    [DEPLOY] init commit
 #
 
-BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr "[:lower:]" "[:upper:]");
+BRANCH_NAME=`git rev-parse --abbrev-ref HEAD 2>/dev/null`;
 
-if [ -n "$BRANCH_NAME" ] && [ "$BRANCH_NAME" != "master" ]; 
+if [ $? -eq 0 ] && [ "$BRANCH_NAME" != "master" ]; 
 	then
+		$BRANCH_NAME = $BRANCH_NAME | tr "[:lower:]" "[:upper:]";
+
 		#.git/COMMIT_EDITMSG
 		sed -i "1s/^/[$BRANCH_NAME] /" $1;
 fi
