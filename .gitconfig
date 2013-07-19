@@ -50,7 +50,11 @@
 	ref        = !git symbolic-ref HEAD 2> /dev/null
 
 	# Show current repository name
-	name       = !git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'
+	name       = !git remote -v | head -n1 | awk '{print $2}'
+
+	user       = !git config --global user.name
+
+	email       = !git config --global user.email
 
 	# Show history
 	history    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
