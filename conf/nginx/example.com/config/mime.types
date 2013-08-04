@@ -1,0 +1,25 @@
+types {
+	text/plain                        txt;
+	text/html                         html;
+	text/xml                          xml;
+	text/css                          css;
+	text/x-component                  htc;
+
+	application/javascript            js;
+	application/json                  json
+	application/xhtml+xml             xhtml;
+	application/rss+xml               rss;
+	application/atom+xml              atom;
+	application/x-shockwave-flash     swf;
+
+	image/gif                         gif
+	image/png                         png;
+	image/jpeg                        jpeg jpg;
+	image/svg+xml                     svg svgz;
+	image/x-icon
+	image/x-ms-bmp                    bmp;
+	image/vnd.wap.wbmp                wbmp;
+	image/webp                        webp;
+}
+
+default_type  application/octet-stream;

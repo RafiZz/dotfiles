@@ -1,0 +1,70 @@
+# Magic variables
+#
+# %v     the vassals directory (pwd)
+# %o     the original config filename, as specified on the command line
+# %p     the absolute path of the configuration file
+# %s     the filename of the configuration file
+# %d     the absolute path of the directory containing the configuration file
+# %e     the extension of the configuration file
+# %n     the filename without extension
+# %c     the name of the directory containing the config file (version 1.3+)
+# %x     the current section identifier, eg. config.ini:section (version 1.9-dev+)
+# %0..%9 a specific component of the full path of the directory containing the config file (version 1.3+)
+# http://uwsgi-docs.readthedocs.org/en/latest/Options.html
+
+uwsgi:
+    # User identifier of uWSGI processes
+    uid           : www
+
+    # Group identifier of uWSGI processes
+    gid           : www
+
+    wsgi-file     : /usr/local/www/example/server/wsgi.py
+
+    # Set port
+    http          : :9000
+
+    # Bind to UNIX socket at /run/uwsgi/<confnamespace>/<confname>/socket
+    #socket        : /var/run/uwsgi/example.com.uwsgi.sock
+
+    # Set mode of created UNIX socket
+    # chmod-socket = 664
+
+    # Write master's pid in file /run/uwsgi/<confnamespace>/<confname>/pid
+    pidfile       : /var/run/uwsgi/example.com.uwsgi.pid
+
+    # Write logs into file
+    daemonize     : /var/log/uwsgi/example.com.uwsgi.log
+
+    python-path   : /usr/bin
+    chdir         : /usr/local/www/example/server
+
+    max-requests  : 5000
+    buffer-size   : 32768
+    harakiri      : 30
+    reload-mercy  : 8
+
+    # Spawn 2 uWSGI worker processes
+    workers       : 2
+    processes     : 10
+
+    # Automatically kill workers on master's death
+    no-orphans    : true
+
+    # Try to autoload appropriate plugin if "unknown" option has been specified
+    autoload      : true
+
+    # Enable master process manager
+    master        : 1
+
+    # Place timestamps into log
+    log-date      : true
+
+    show-config   : true
+
+    #virtualenv   : /Users/www/env
+    # env         : DJANGO_SETTINGS_MODULE=views.settings
+    # module      : django.core.handlers.wsgi:WSGIHandler()
+    # touch-reload  : /var/run/%n/example.com.%n.pid
+
+    # --no-site

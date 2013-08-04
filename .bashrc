@@ -1,6 +1,7 @@
 # .bashrc
 
 export COMMAND_MODE=unix2003
+export LESSCHARSET=utf-8
 export LESS="-erX".
 
 alias zcat='gunzip -c'
