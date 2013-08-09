@@ -34,7 +34,7 @@ import yaml
 
 import sys
 import subprocess
-import time
+# import time
 
 
 
@@ -46,33 +46,12 @@ class Fest(object):
         self.__run()
 
 
-    def __exec(self, command, text=None):
-        if text:
-            self.__log('%s...' % text)
-
-        try:
-            process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
-
-            # while process.poll() is None:
-            #   time.sleep(.2)
-            #
-            # if process.returncode is not 0:
-            #   self.__log('there was an error starting the server', True)
-
-            output, error = process.communicate()
-
-            return output.decode('utf-8')
-
-        except OSError as error:
-            self.__log('Execution failed: \n%s' % error, True)
-
-
     def __parse_config(self, name, file):
         try:
             data = yaml.load(file, Loader=yaml.Loader)
 
             if self.options.get('test'):
-                self.__log('%s syntax is ok' % name)
+                self.log('%s syntax is ok' % name)
 
         except yaml.YAMLError as error:
             sys.exit(error)
@@ -86,10 +65,10 @@ class Fest(object):
                 return self.__parse_config(name, file)
 
         except IOError:
-            self.__log('the file %s was not found' % name, True)
+            self.log('the file %s was not found' % name, True)
 
 
-    def __log(self, name, exit=''):
+    def log(self, name, exit=''):
         print('[%s]%s %s' % (self.__class__.__name__,
             exit and ' error:', name))
 
@@ -102,14 +81,14 @@ class Fest(object):
         data = self.__get_config(path)
 
         if not data:
-            self.__log('the configuration file %s is not found' %
+            self.log('the configuration file %s is not found' %
                 path, True)
 
         name = self.options.get('name')
         data = data[name]
 
         if not data:
-            self.__log('there is no the project settings in file %s' %
+            self.log('there is no the project settings in file %s' %
                 path, True)
 
         return data
@@ -123,6 +102,27 @@ class Fest(object):
                 return self.__getattribute__(key)()
 
 
+    def exec(self, command, text=None):
+        if text:
+            self.log('%s...' % text)
+
+        try:
+            process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+
+            # while process.poll() is None:
+            #   time.sleep(.2)
+            #
+            # if process.returncode is not 0:
+            #   self.log('there was an error starting the server', True)
+
+            output, error = process.communicate()
+
+            return output.decode('utf-8')
+
+        except OSError as error:
+            self.log('Execution failed: \n%s' % error, True)
+
+
     def required(self):
         required = {'user', 'path', 'proxy',
                     'pid', 'log', 'config'}
@@ -130,21 +130,21 @@ class Fest(object):
         result = required <= set(self.params)
 
         if not result:
-            self.__log('please see required options: \n %s' %
+            self.log('please see required options: \n %s' %
                 required, True)
 
         return result
 
 
     def pid(self):
-        process = self.__exec("ps aux | grep %(proxy)s | \
+        process = self.exec("ps aux | grep %(proxy)s | \
             grep -v grep | head -n1 | awk '{print $2}'" % self.params)
 
         try:
             return int(process)
 
         except ValueError:
-            self.__log('nothing to stop', True)
+            self.log('nothing to stop', True)
 
 
     def test(method):
@@ -154,14 +154,14 @@ class Fest(object):
 
     @test
     def start(self):
-        self.__exec('su -m %(user)s -c "nohup %(path)s \
+        self.exec('su -m %(user)s -c "nohup %(path)s \
             %(proxy)s %(config)s < /dev/null >> %(log)s 2>&1 &"' %
             self.params, 'starting')
 
 
     @test
     def stop(self):
-        self.__exec('kill -9 %s > /dev/null 2>&1' %
+        self.exec('kill -9 %s > /dev/null 2>&1' %
             self.pid(), 'stopping')
 
 
@@ -172,10 +172,10 @@ class Fest(object):
 
 
     def version(self):
-        output = self.__exec('%(path)s %(proxy)s --version' %
+        output = self.exec('%(path)s %(proxy)s --version' %
             self.params)
 
-        self.__log(output)
+        self.log(output)
 
 
     def state(self):
@@ -184,8 +184,8 @@ class Fest(object):
                 awk "NR == 1 || /fest/" | grep -vE "awk|--info" ;
             }'''
 
-        output = self.__exec(command)
-        self.__log(output)
+        output = self.exec(command)
+        self.log(output)
 
 
 
