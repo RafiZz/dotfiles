@@ -1,19 +1,34 @@
 # .bashrc
 
-export COMMAND_MODE=unix2003
-export LESSCHARSET=utf-8
-export LESS="-erX".
-
-alias zcat='gunzip -c'
-
+for file in ~/.{export,alias}; do
+	[ -r "$file" ] && source "$file"
+done
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# User specific aliases and functions
+if [ -f /etc/bash_completion ]; then
+  . /etc/bash_completion
+fi
 
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
+
+# Enable some Bash 4 features when possible:
+# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
+# * Recursive globbing, e.g. `echo **/*.txt`
+
+for option in autocd globstar; do
+	shopt -s "$option" 2> /dev/null
+done
 
 function ps1_git_status {
     local branch_color='\033[01;34m'
@@ -68,10 +83,5 @@ case "$TERM" in
     *)
         ;;
 esac
-
-if [ -f /etc/bash_completion ]; then
-  . /etc/bash_completion
-fi
-
 
 
