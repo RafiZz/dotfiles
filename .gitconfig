@@ -82,7 +82,7 @@
 	#git config --global --get-regexp alias
 
 	# Find files
-	find       = !git ls-files -r HEAD | grep -ii
+	find       = !git ls-files | grep -iE
 
 	# Remove files which have been deleted
 	remove     = !git ls-files -z --deleted | xargs -0 git rm
