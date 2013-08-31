@@ -122,6 +122,8 @@
 
 	go         = !gitgo
 
+	release    = !git tag -a $1 -m $1 && git push --tags && git commit -am $1
+
 #	revert     = checkout --
 
 
