@@ -1,0 +1,71 @@
+function ps1_status {
+	local branch_color='\033[01;34m'
+	local index_color='\033[01;32m'
+	local modified_color='\033[01;31m'
+	local untracked_color='\033[01;33m'
+	local no_color='\033[0m'
+
+	[[ -z $(which git 2>/dev/null) ]] && return
+
+	local status=$(/usr/bin/git status 2>/dev/null)
+
+	[[ -z $status ]] && return
+
+	local branch="$(git branch --no-color 2> /dev/null | \
+		sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')"
+
+	if [[ "$branch" == *'(no branch)'* ]]
+		then
+			branch='no branch'
+	fi
+
+	local state=''
+
+	if [[ "$status" != *'working directory clean'* ]]
+		then
+			state=':'
+
+			if [[ "$status" == *'Changes to be committed:'* ]]
+				then
+					state=$state"${index_color}I${no_color}"
+			fi
+
+			if [[ "$status" == *'Changes not staged for commit'* ]]
+				then
+					state=$state"${modified_color}M${no_color}"
+			fi
+
+			if [[ "$status" == *'Untracked files:'* ]]
+				then
+					state=$state"${untracked_color}U${no_color}"
+			fi
+	fi
+
+	echo -ne " (${branch_color}${branch}${no_color}${state})"
+}
+
+# Set colors for user
+case `id -u` in
+	0) lcolor='\[\033[01;31m\]';;
+	*) lcolor='\[\033[01;32m\]';;
+esac
+
+hcolor='\[\033[01;33m\]'
+nocolor='\[\033[0m\]'
+
+PROMPT_COMMAND='history -a'
+
+case "$TERM" in
+	xterm*|rxvt*)
+		# Set prompt
+		PS1="${lcolor}\u${nocolor}@${hcolor}dev${nocolor}:\w\$(ps1_status)\\\$ "
+
+		# Set terminal title
+		PROMPT_COMMAND='echo -ne "\033]0;${USER}@$HOSTNAME: ${PWD/$HOME/~}\007"'
+		;;
+	*)
+		;;
+esac
+
+
+GIT_PS1_SHOWDIRTYSTATE=true
