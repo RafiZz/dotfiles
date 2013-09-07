@@ -2,7 +2,7 @@
 
 # http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
 
-for file in ~/.{prompt,export,alias,colors}
+for file in ~/.{prompt,export,alias,colors,install}
 	do
 		[ -r "$file" ] && source "$file"
 done

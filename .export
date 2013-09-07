@@ -1,4 +1,4 @@
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:/opt/local/bin:$PATH"
 
 
 export COMMAND_MODE=unix2003
