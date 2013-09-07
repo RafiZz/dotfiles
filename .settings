@@ -1,3 +1,0 @@
-
-# Show hidden files
-defaults write com.apple.Finder AppleShowAllFiles YES
