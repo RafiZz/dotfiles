@@ -2,11 +2,6 @@
 
 # http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
 
-for file in ~/.{prompt,export,alias,colors,install}
-	do
-		[ -r "$file" ] && source "$file"
-done
-
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
@@ -19,6 +14,10 @@ shopt -s histappend
 shopt -s cdspell
 
 
+# this is for delete words by ^W
+tty -s && stty werase ^- 2>/dev/null
+
+
 # Save all lines of a multiple-line command in the same history entry
 # (allows easy re-editing of multi-line commands)
 shopt -s cmdhist
@@ -27,6 +26,12 @@ shopt -s cmdhist
 # Don't autocomplete when accidentally pressing tab on an empty line.
 # (It takes forever and yields "Display all 15 gazillion possibilites?")
 shopt -s no_empty_cmd_completion
+
+
+for file in ~/.{prompt,export,alias,colors,install}
+	do
+		[ -r "$file" ] && source "$file"
+done
 
 
 # Enable some Bash 4 features when possible:
@@ -53,4 +58,4 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail \
 if [ -f /etc/bash_completion.d/git ];
 	then
 		. /etc/bash_completion.d/git
-	fi
+fi

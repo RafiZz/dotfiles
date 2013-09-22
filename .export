@@ -1,13 +1,23 @@
 export PATH="$HOME/bin:/opt/local/bin:$PATH"
 
-
 export COMMAND_MODE=unix2003
+export GREP_OPTIONS="--color=auto"
 export LESSCHARSET=utf-8
 export LESS="-erX".
 export CLICOLOR=1
 export TERM="xterm-color"
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
+# Postgres won't work without this
+export PGHOST=/tmp
+
+# Exclude duplites from history
+export HISTCONTROL="ignoredups"
+
+# Exclude uninformative commands
+# export HISTIGNORE="&:ls:[bf]g:exit"
+
+# grep colorize
 
 unset LC_ALL
 export LANG=C

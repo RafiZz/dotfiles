@@ -1,7 +1,13 @@
 
-if [[ -z $(which port 2>/dev/null) ]]
+if [[ -z `which port 2>/dev/null` ]]
 	then exit 0;
 fi
+
+# Install some commands
+for command in ngrep
+	do [[ -z `which $command 2>/dev/null` ]] && \
+		sudo install $command
+done
 
 # Update MacPorts
 # sudo port -d selfupdate
