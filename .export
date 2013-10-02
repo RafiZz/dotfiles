@@ -1,9 +1,11 @@
 export PATH="$HOME/bin:/opt/local/bin:$PATH"
 
+export EDITOR=vim
 export COMMAND_MODE=unix2003
-export GREP_OPTIONS="--color=auto"
 export LESSCHARSET=utf-8
 export LESS="-erX".
+
+export GREP_OPTIONS="--color=auto"
 export CLICOLOR=1
 export TERM="xterm-color"
 export LSCOLORS=GxFxCxDxBxegedabagaced

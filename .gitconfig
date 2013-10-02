@@ -42,6 +42,7 @@
 
 	# Push into current remote branch
 	pc         = !git rev-parse --abbrev-ref HEAD | xargs git push origin
+	pl         = !git rev-parse --abbrev-ref HEAD | xargs git pull origin
 
 	# Show untracked files
 	stu        = status --untracked-files=no
@@ -116,7 +117,7 @@
 
 	# Remote update (git fetch --all)
 	up = remote update
-	
+
 	# Delete multiple branches
 	#git branch -D `git for-each-ref --format="%(refname:short)" refs/heads/...`
 
