@@ -12,7 +12,7 @@
 	bare       = false
 	eol        = native
 	whitespace = fix, -indent-with-non-tab, trailing-space, cr-at-eol
-	pager      = less -R
+	pager      = less -+$LESS -FRX
 #	pager      = more
 #	logallrefupdates  = true
 #	precomposeunicode = false
@@ -163,4 +163,4 @@
 	clean  = expand -t4
 
 # Check SHA-1
-#git config --system receive.fsckObjects truel
+# git config --system receive.fsckObjects truel

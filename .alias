@@ -24,6 +24,25 @@ if [[ -z `which strace 2>/dev/null` ]]
 		}
 fi
 
+# Emulate the command ltrace
+if [[ -z `which ltrace 2>/dev/null` ]]
+	then
+		function ltrace {
+			echo -e '\nUse the dtrace or dapptrace command! \nSee man -k dtrace \nshow (y/n)?';
+
+			read dtrace;
+
+			[[ "$dtrace" == y ]] && \
+				man -k dtrace;
+		}
+fi
+
+# Emulate the command ltrace
+if [[ -z `which ssh-copy-id 2>/dev/null` ]]
+	then
+		alias ssh-copy-id="cat ~/.ssh/id_rsa.pub | ssh $1 'cat >> ~/.ssh/authorized_keys'";
+fi
+
 # Emulate the command free
 if [[ -z `which free 2>/dev/null` ]]
 	then
@@ -67,3 +86,4 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | \
 
 alias cal="cal | GREP_COLOR='1;7;1' \
 	grep --color=always -C6 -E '(^| )$(date +%e)($| )'"
+

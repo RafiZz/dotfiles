@@ -30,6 +30,7 @@ shopt -s no_empty_cmd_completion
 
 for file in ~/.{prompt,export,alias,colors,install}
 	do
+		echo $file
 		[ -r "$file" ] && source "$file"
 done
 
@@ -59,3 +60,11 @@ if [ -f /etc/bash_completion.d/git ];
 	then
 		. /etc/bash_completion.d/git
 fi
+
+if [[ -z `which ssh-add 2>/dev/null` ]]
+	then
+		function strace {
+			echo -e '\nUse the dtruss command! \n'
+		}
+fi
+
