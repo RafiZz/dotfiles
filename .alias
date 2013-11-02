@@ -16,7 +16,7 @@ if ls --color > /dev/null 2>&1
 		colorflag="-G"
 fi
 
-# Emulate the command strace
+# strace command
 if [[ -z `which strace 2>/dev/null` ]]
 	then
 		function strace {
@@ -24,7 +24,7 @@ if [[ -z `which strace 2>/dev/null` ]]
 		}
 fi
 
-# Emulate the command ltrace
+# ltrace command
 if [[ -z `which ltrace 2>/dev/null` ]]
 	then
 		function ltrace {
@@ -37,13 +37,22 @@ if [[ -z `which ltrace 2>/dev/null` ]]
 		}
 fi
 
-# Emulate the command ltrace
+# ssh-copy-id command
 if [[ -z `which ssh-copy-id 2>/dev/null` ]]
 	then
 		alias ssh-copy-id="cat ~/.ssh/id_rsa.pub | ssh $1 'cat >> ~/.ssh/authorized_keys'";
 fi
 
-# Emulate the command free
+# readelf command
+if [[ -z `which readelf 2>/dev/null` ]]
+	then
+		function readelf {
+			echo -e 'Try to install the binutils command: \nport install binutils \nngobjdump -p file.o\n';
+			echo -e 'Or try to use the otool / dwarfdump / jtool commands: \notool -l test.o'
+		}
+fi
+
+# free command
 if [[ -z `which free 2>/dev/null` ]]
 	then
 		if [[ -n `which vm_stat 2>/dev/null` ]]
@@ -86,4 +95,3 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | \
 
 alias cal="cal | GREP_COLOR='1;7;1' \
 	grep --color=always -C6 -E '(^| )$(date +%e)($| )'"
-
