@@ -14,7 +14,7 @@ shopt -s histappend
 shopt -s cdspell
 
 
-# this is for delete words by ^W
+# Delete words by ^W
 tty -s && stty werase ^- 2>/dev/null
 
 
@@ -28,18 +28,16 @@ shopt -s cmdhist
 shopt -s no_empty_cmd_completion
 
 
-for file in ~/.{prompt,export,alias,colors,install}
-	do
-		echo $file
-		[ -r "$file" ] && source "$file"
+for file in ~/.{export,alias,prompt,colors,install}
+	do [ -r "$file" ] && source "$file"
 done
 
 
 # Enable some Bash 4 features when possible:
-# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
-# * Recursive globbing, e.g. `echo **/*.txt`
-for option in autocd globstar; do
-	shopt -s "$option" 2> /dev/null
+# `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
+# Recursive globbing, e.g. `echo **/*.txt`
+for option in autocd globstar
+	do shopt -s "$option" 2> /dev/null
 done
 
 
@@ -60,11 +58,3 @@ if [ -f /etc/bash_completion.d/git ];
 	then
 		. /etc/bash_completion.d/git
 fi
-
-if [[ -z `which ssh-add 2>/dev/null` ]]
-	then
-		function strace {
-			echo -e '\nUse the dtruss command! \n'
-		}
-fi
-

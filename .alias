@@ -58,7 +58,8 @@ if [[ -z `which free 2>/dev/null` ]]
 		if [[ -n `which vm_stat 2>/dev/null` ]]
 			then
 				function free {
-					vm_stat | perl -ne '/page size of (\d+)/ and $size=$1; /Pages\s+([^:]+)[^\d]+(\d+)/ and printf("%-16s % 16.2f Mi\n", "$1:", $2 * $size / 1048576);'
+					vm_stat | perl -ne '/page size of (\d+)/ and $size=$1; /Pages\s+([^:]+)[^\d]+(\d+)/ and \
+						printf("%-16s % 16.2f Mb\n", "$1:", $2 * $size / 1048576);'
 				}
 			else
 				function free {
@@ -95,3 +96,7 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | \
 
 alias cal="cal | GREP_COLOR='1;7;1' \
 	grep --color=always -C6 -E '(^| )$(date +%e)($| )'"
+
+
+
+

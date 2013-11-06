@@ -1,15 +1,3 @@
-# setup color variables
-color_is_on=
-color_red=
-color_green=
-color_yellow=
-color_blue=
-color_white=
-color_gray=
-color_bg_red=
-color_off=
-color_user=
-
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null
 	then
 		color_is_on=true
@@ -43,10 +31,6 @@ else
 fi
 
 function prompt_command {
-	local PS1_GIT=
-	local PS1_VENV=
-	local GIT_BRANCH=
-	local GIT_DIRTY=
 	local PWDNAME=$PWD
 
 	# beautify working directory name
@@ -141,16 +125,17 @@ function prompt_command {
 
 	# get cursor position and add new line if we're not in first column
 	# XXX FIXME: this hack broke ssh =(
-#	exec < /dev/tty
-#	local OLDSTTY=$(stty -g)
-#	stty raw -echo min 0
-#	echo -en "\033[6n" > /dev/tty && read -sdR CURPOS
-#	stty $OLDSTTY
+	# exec < /dev/tty
+	# local OLDSTTY=$(stty -g)
+	# stty raw -echo min 0
+	# echo -en "\033[6n" > /dev/tty && read -sdR CURPOS
+	# stty $OLDSTTY
 
-	echo -en "\033[6n" && read -sdR CURPOS
+	# may break the mc and tty
+	# echo -en "\033[6n" && read -sdR CURPOS
 
-	[[ ${CURPOS##*;} -gt 1 ]] && \
-		echo "${color_error}↵${color_error_off}"
+	# [[ ${CURPOS##*;} -gt 1 ]] && \
+	#	echo "${color_error}↵${color_error_off}"
 
 	# set title
 	echo -ne "\033]0;${USER}@${LOCAL_HOSTNAME}:${PWDNAME}";
