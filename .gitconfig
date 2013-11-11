@@ -55,7 +55,7 @@
 
 	user       = !git config --global user.name
 
-	email       = !git config --global user.email
+	email      = !git config --global user.email
 
 	# Show history
 	history    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
@@ -127,6 +127,12 @@
 
 #	revert     = checkout --
 
+
+# Reserved cases
+# gitk --follow --all -p $1
+# tig --follow --all -p $1
+# git gui blame $1
+# git whatchanged -p $1
 
 [color]
 	diff   = true
