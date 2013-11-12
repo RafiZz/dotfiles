@@ -30,7 +30,7 @@
 	df         = diff
 	lg         = log --abbrev-commit --left-right --name-only
 	st         = status --short
-	cia        = commit --allow-empty-message -a
+	cia        = commit --allow-empty-message -all
 
 	# Stash commands
 	sl         = stash list
@@ -113,10 +113,10 @@
 	# git remote add remote git@github.com:monolithed/.configure.git
 	# git pull remote master
 
-	root = !pwd -P
+	root       = !pwd -P
 
 	# Remote update (git fetch --all)
-	up = remote update
+	up         = remote update
 
 	# Delete multiple branches
 	#git branch -D `git for-each-ref --format="%(refname:short)" refs/heads/...`
@@ -124,6 +124,8 @@
 	go         = !gitgo
 
 	release    = !git commit -am $1 && git tag -a $1 -m $1 && git push --tags
+
+	rename-tag = !git tag $1 $2 && git tag --delete $2 && git push origin :refs/tags/$2 && git push --tags
 
 #	revert     = checkout --
 
