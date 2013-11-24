@@ -1,6 +1,6 @@
 # -*- coding: utf-8; indent-tabs-mode: nil; tab-width: 4; c-basic-offset: 4; -*-
 
-'''
+"""
 - fest process helper
 -
 - fest.py  [ --test ] | [ --stop ] | [ --start ] | [ --reload ] | [ --state ] | [ --version ] |
@@ -27,7 +27,7 @@ _
 - @version 0.0.2
 - @license: MIT
 - @date: Aug 04 04:05:00 2013
-'''
+"""
 
 
 import yaml

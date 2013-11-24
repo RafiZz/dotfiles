@@ -24,6 +24,7 @@
 
 [alias]
 	# Base commands
+	# diff     = diff --name-status
 	ci         = commit
 	br         = branch
 	co         = checkout

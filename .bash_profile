@@ -28,6 +28,10 @@ shopt -s cmdhist
 shopt -s no_empty_cmd_completion
 
 
+# Use extended globbing
+# shopt -s extglob
+
+
 for file in ~/.{export,alias,prompt,colors,install}
 	do [ -r "$file" ] && source "$file"
 done

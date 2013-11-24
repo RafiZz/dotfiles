@@ -15,11 +15,14 @@ a.out
 *.out
 .idea
 *.pyc
+
 *.tmp
 *.bak
 tmp
+
 *.xmind
 .project
 .gitconfig
 .DS_Store
-*/tornado
+
+node_modules
