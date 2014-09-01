@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /usr/bin/env sh
 
 # http://uwsgi-docs.readthedocs.org/en/latest/Nginx.html
 

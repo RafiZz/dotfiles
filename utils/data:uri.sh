@@ -1,4 +1,4 @@
-#! /bin/env sh
+#! /usr/bin/env sh
 
 # Create a data URI from a file and copy it to the pasteboard
 mime_type=$(file -b --mime-type "$1")

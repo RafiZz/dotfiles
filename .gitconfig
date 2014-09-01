@@ -16,6 +16,7 @@
 #	pager      = more
 #	logallrefupdates  = true
 #	precomposeunicode = false
+#	trustctime = false
 
 
 [showbranch]
@@ -25,13 +26,13 @@
 [alias]
 	# Base commands
 	# diff     = diff --name-status
-	ci         = commit
+	ci         = commit --allow-empty-message
 	br         = branch
 	co         = checkout
 	df         = diff
 	lg         = log --abbrev-commit --left-right --name-only
 	st         = status --short
-	cia        = commit --allow-empty-message -all
+	cia        = commit --allow-empty-message --all
 
 	# Stash commands
 	sl         = stash list
@@ -129,6 +130,11 @@
 	rename-tag = !git tag $1 $2 && git tag --delete $2 && git push origin :refs/tags/$2 && git push --tags
 
 #	revert     = checkout --
+
+	# Replace text for all indexed files
+#	rp         = !git grep --name-only $1 | xargs sed -i '' "s/$1/$2/"
+
+	update-submodules = !git pull --recurse-submodules && git submodule update --recursive
 
 
 # Reserved cases

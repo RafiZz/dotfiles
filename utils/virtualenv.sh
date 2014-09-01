@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /usr/bin/env sh
 
 # http://3bep.blogspot.ru/2010/11/virtualevn-virtualenvwrapper-and-pip.html
 

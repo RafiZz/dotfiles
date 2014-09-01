@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /usr/bin/env sh
 
 
 LOG_DIR=/var/log;

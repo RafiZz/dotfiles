@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /usr/bin/env sh
 
 
 PID_DIR=/var/run;
