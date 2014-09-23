@@ -1,28 +1,109 @@
-# Ignore rules
+# --------------------------
+# System
+# --------------------------
 
 *~
 *#*
 ._*
 \#*
 
+# --------------------------
+# Object files
+# --------------------------
+
 *.o
-*.a
 *.so
 *.lo
-*.bak
-*.iml
+*.a
 a.out
 *.out
-.idea
-*.pyc
 
-*.tmp
-*.bak
-tmp
+# --------------------------
+# Git
+# --------------------------
 
-*.xmind
-.project
 .gitconfig
-.DS_Store
+
+# --------------------------
+# Node
+# --------------------------
 
 node_modules
+npm-shrinkwrap.json
+npm-debug.log
+
+# --------------------------
+# Erlang
+# --------------------------
+
+erl_crash.dump
+
+# --------------------------
+# Python
+# --------------------------
+
+__pycache__
+pip-log.txt
+pip-delete-this-directory.txt
+.installed.cfg
+*.py[cod]
+*.egg-info
+*.egg
+*.log
+
+# --------------------------
+# Python
+# --------------------------
+.sass-cache
+
+# --------------------------
+# Darwin
+# --------------------------
+
+.DS_Store
+
+# --------------------------
+# IDEA
+# --------------------------
+
+.idea
+*.iml
+
+# --------------------------
+# Visual Studio
+# --------------------------
+
+*.old
+*.sln
+*.suo
+*.ncb
+*.sdf
+*.log
+*.tlog
+*.idb
+*.pdb
+*.scc
+*.user
+*.filters
+*.vsscc
+*.vbproj
+*.vspscc
+*.csproj
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.lastbuildstate
+*.unsuccessfulbuild
+*.cache
+Debug
+
+# --------------------------
+# Other
+# --------------------------
+
+*.bak
+*.tmp
+.coveralls.yml
+/tmp
+/cache
+
