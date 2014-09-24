@@ -98,5 +98,11 @@ alias cal="cal | GREP_COLOR='1;7;1' \
 	grep --color=always -C6 -E '(^| )$(date +%e)($| )'"
 
 
+#==================================================================
+
+alias www='cd /usr/local/www'
+alias nginx='sudo /etc/init.d/nginx.sh';
+alias adduser='sudo /etc/init.d/adduser.sh'
+
 
 
