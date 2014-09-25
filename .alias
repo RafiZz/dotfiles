@@ -101,7 +101,6 @@ alias cal="cal | GREP_COLOR='1;7;1' \
 #==================================================================
 
 alias www='cd /usr/local/www'
-alias nginx='sudo /etc/init.d/nginx.sh';
 alias adduser='sudo /etc/init.d/adduser.sh'
 
 
