@@ -1,9 +1,4 @@
-# export PATH="$HOME/bin:/opt/local/bin:$PATH"
-
-export PATH="$HOME/bin:/opt/local/bin:/opt/local/Library/Frameworks/Python.framework/Versions/3.4/bin:$PATH"
-
-# fix for mc <cd "`printf "%b">
-export HISTCONTROL=ignoreboth
+export PATH="$HOME/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:$PATH"
 
 export EDITOR=vim
 export COMMAND_MODE=unix2003
@@ -18,16 +13,14 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # Postgres won't work without this
 export PGHOST=/tmp
 
-# Exclude duplites from history
-export HISTCONTROL="ignoredups"
+# Exclude duplites from history (like mc <cd "`printf "%b">)
+export HISTCONTROL="ignoreboth"
 
 # Exclude uninformative commands
 # export HISTIGNORE="&:ls:[bf]g:exit"
 
-# grep colorize
-
-unset LC_ALL
 export LANG=C
+export LC_ALL="ru_RU.UTF-8"
 export LC_CTYPE="ru_RU.UTF-8"
 export LC_NUMERIC="ru_RU.UTF-8"
 export LC_TIME="ru_RU.UTF-8"
