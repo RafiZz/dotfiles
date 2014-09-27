@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#! /usr/bin/env sh
 
 # @description: Nginx is an HTTP(S) server, HTTP(S)
 # reverse proxy and IMAP/POP3 proxy server
@@ -9,9 +9,9 @@
 # @license:     MIT, BSD, GPL
 # @date:        Jun 12 01:33:00 2013
 
-read -d '' help <<- EOF
+read -d '' NGINX_HELP <<- EOF
 	Usage:
-		${0} [ start | stop | restart | reload | test | process | info | help ]
+		${0} [ start | stop | quit | restart | reload | reopen | test | info | help ]
 
 	Call pure nginx process:
 	${0} precess [-?hvVtq] [-s signal] [-c filename] [-p prefix] [-g directives]
@@ -40,61 +40,84 @@ read -d '' help <<- EOF
 		For more info see http://wiki.nginx.org/CommandLine
 EOF
 
+# NOTE: By default the PID stored in /usr/local/nginx/logs/nginx.pid
 
-NGINX_DIR=/opt/local;
-NGINX_DAEMON=${NGINX_DIR}/sbin/nginx;
-NGINX_CONF=${NGINX_DIR}/etc/nginx/nginx.conf;
+NGINX_PATH="/opt/local";
+NGINX_FILE="${NGINX_PATH}/sbin/nginx";
+NGINX_CONF="${NGINX_FILE} -c ${NGINX_PATH}/etc/nginx/nginx.conf";
 
 
-__test() {
-	local NGINX_TEST="${NGINX_DAEMON} -c ${NGINX_CONF} -t";
-	2>&1 ${NGINX_TEST} &>/dev/null || ${NGINX_TEST};
+function __launch {
+	test && 2>&1 ${NGINX_FILE} -s $1
 }
 
-__launch() {
-	__test && ${NGINX_DAEMON} -s ${1} &>/dev/null;
+function __kill {
+	local text="nginx has been stopped"
+
+	pgrep nginx &>/dev/null && __launch $1 && \
+		echo "${text}" || \
+		echo "${text} already"
 }
 
-__start() {
-	[ -r ${NGINX_CONF} ] || exit 1;
-	__test && ${NGINX_DAEMON} -c ${NGINX_CONF} &>/dev/null || return ${?};
+function test {
+	[[ $1 -ne 1 ]] && \
+		2>&1 ${NGINX_CONF} -t &>/dev/null || ${NGINX_CONF} -t
 }
 
-__stop() {
-	__launch stop;
+function start {
+	test && ${NGINX_CONF} 2>&1 && \
+		echo 'nginx has been started'
 }
 
-__reload() {
-	__test && __launch reload || return ${?};
+function stop {
+	__kill stop
 }
 
-__restart() {
-	__stop && __start;
+function quit {
+	__kill quit
 }
 
-__process() {
-	${NGINX_DAEMON} ${1} &>/dev/null;
+function reload {
+	__launch reload 2>&1
 }
 
-__info() {
+function reopen {
+	__launch reopen 2>&1
+}
+
+function restart {
+	stop; start
+}
+
+function info {
 	ps axw -o pid,user,%cpu,%mem,command | {
 		awk 'NR == 1 || /uwsgi/' | grep -v awk;
 		echo -$_{1..80} | tr -d ' ';
 	}
 
-	2>&1 ${NGINX_DAEMON} -V | sed 's/--/\'$'\n&/g';
+	2>&1 ${NGINX_FILE} -V | sed 's/--/\'$'\n&/g'
 }
 
-__help() {
-	echo "$help";
+function help {
+	echo "${NGINX_HELP}";
 }
+
+if [[ ! -x "${NGINX_FILE}" ]]
+	then
+		echo "[error] '${NGINX_FILE}' not found"
+		exit 2
+fi
 
 case "${1}" in
-	start|stop|restart|reload|process|test|info|help)
-		#[ -z ${NGINX_DAEMON} ] || exit 2;
-		__${1}
-		;;
+	start|stop|quit|restart|reload|reopen|info|help)
+		${1}
+	;;
+
+	test)
+		test 1
+	;;
+
 	*)
-		__help
+		${NGINX_FILE} $@
 	;;
 esac
