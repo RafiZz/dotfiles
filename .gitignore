@@ -17,6 +17,15 @@
 *.a
 a.out
 *.out
+*.dll
+*.exe
+
+# --------------------------
+# Java
+# --------------------------
+
+*.com
+*.class
 
 # --------------------------
 # Git
@@ -55,12 +64,6 @@ pip-delete-this-directory.txt
 # Python
 # --------------------------
 .sass-cache
-
-# --------------------------
-# Darwin
-# --------------------------
-
-.DS_Store
 
 # --------------------------
 # IDEA
@@ -103,6 +106,10 @@ Debug
 
 *.bak
 *.tmp
+.DS_Store
+ehthumbs.db
+Thumbs.db
+Icon?
 .coveralls.yml
 /tmp
 /cache
