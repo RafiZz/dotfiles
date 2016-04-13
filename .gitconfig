@@ -6,6 +6,7 @@
 [core]
 #	excludesfile = /home/..../.gitignore_global
 	autocrlf   = input
+	fileMode   = false
 	safecrlf   = true
 	ignorecase = false
 #	filemode   = false
@@ -136,6 +137,7 @@
 
 	update-submodules = !git pull --recurse-submodules && git submodule update --recursive
 
+	barnches = !git for-each-ref --format='%(committerdate) %09 %(authorname) %09 %(refname)' | sort -k5n -k2M -k3n -k4n
 
 # Reserved cases
 # gitk --follow --all -p $1
