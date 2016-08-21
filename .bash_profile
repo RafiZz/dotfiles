@@ -3,7 +3,7 @@
 # http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
 
 # Case-insensitive globbing (used in pathname expansion)
-shopt -s nocaseglob
+#shopt -s nocaseglob
 
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend
@@ -12,7 +12,7 @@ shopt -s histappend
 shopt -s cdspell
 
 # Delete words by ^W
-tty -s && stty werase ^- 2>/dev/null
+#tty -s && stty werase ^- 2>/dev/null
 
 # Save all lines of a multiple-line command in the same history entry
 # (allows easy re-editing of multi-line commands)
@@ -26,7 +26,7 @@ shopt -s no_empty_cmd_completion
 # shopt -s extglob
 
 # Add private key identities to the authentication agent
-ssh-add
+#ssh-add
 
 for file in ~/.{export,alias,prompt,colors,install}
 	do [ -r "$file" ] && source "$file"
@@ -41,7 +41,7 @@ for option in autocd globstar
 done
 
 
-# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+ Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && \
 	complete -o "default" -o "nospace" -W \
 		"$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | awk '{print $2}')" \
