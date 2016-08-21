@@ -1,8 +1,4 @@
 
-if [[ -z `which port 2>/dev/null` ]]
-	then exit 0;
-fi
-
 # Install some commands
 for command in ngrep
 	do [[ -z `which $command 2>/dev/null` ]] && \
