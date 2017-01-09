@@ -26,7 +26,7 @@ shopt -s no_empty_cmd_completion
 # shopt -s extglob
 
 # Add private key identities to the authentication agent
-#ssh-add
+ssh-add
 
 for file in ~/.{export,alias,prompt,colors,install}
 	do [ -r "$file" ] && source "$file"
@@ -41,7 +41,7 @@ for option in autocd globstar
 done
 
 
- Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && \
 	complete -o "default" -o "nospace" -W \
 		"$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | awk '{print $2}')" \

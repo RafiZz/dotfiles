@@ -27,12 +27,13 @@
 [alias]
 	# Base commands
 	# diff     = diff --name-status
+	ca         = commit --amend --no-edit
 	ci         = commit --allow-empty-message
 	br         = branch
 	co         = checkout
 	df         = diff
 	lg         = log --abbrev-commit --left-right --name-only
-	st         = status --short
+	st         = status --short --branch
 	cia        = commit --allow-empty-message --all
 
 	# Stash commands
@@ -102,6 +103,10 @@
 	ignore     = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >> .gitignore
 
 	# Assume a file as unchanged
+
+	# Keep history
+	please     = !git push --force-with-lease
+
 	assume     = !git update-index --assume-unchanged
 
 	# Unassume a file
